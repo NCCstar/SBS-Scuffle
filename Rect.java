@@ -44,4 +44,9 @@ public class Rect implements Shape
    {
       return height;
    }
+   public void offsetX(double x)
+   {
+      left+=x;
+      right+=x;
+   }
 }

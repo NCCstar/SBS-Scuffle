@@ -14,4 +14,11 @@ public class Hitbox
          i.draw(g);
       }
    }
+   public void offsetX(double off)
+   {
+      for(Shape i:boxes)
+      {
+         i.offsetX(off);
+      }
+   }
 }

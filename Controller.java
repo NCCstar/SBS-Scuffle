@@ -3,12 +3,12 @@ public class Controller
 {
    private SBSS_Panel game;
 
-   private boolean keyW=false;
-   private boolean keyA=false;
-   private boolean keyS=false;
-   private boolean keyD=false;
-   private boolean keySp=false;
-   private boolean keySh=false;
+   public boolean keyW=false;
+   public boolean keyA=false;
+   public boolean keyS=false;
+   public boolean keyD=false;
+   public boolean keySp=false;
+   public boolean keySh=false;
    /*
    private boolean key4=false;
    private boolean key5=false;

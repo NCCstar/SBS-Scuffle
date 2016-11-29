@@ -30,4 +30,8 @@ public abstract class Phys
    {
       return hitbox;
    }
+   public void offsetX(double off)
+   {
+      hitbox.offsetX(off);
+   }
 }
