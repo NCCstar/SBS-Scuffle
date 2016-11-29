@@ -1,7 +1,8 @@
 import java.util.*;
 public abstract class Level
 {
-   public int SIZE;
+   public int XSIZE;
+   public int YSIZE;
    private List<Shape> boxes = new ArrayList();
    public List<Shape> getBoxes()
    {

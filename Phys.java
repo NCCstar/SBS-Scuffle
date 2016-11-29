@@ -1,3 +1,4 @@
+import java.awt.*;
 public abstract class Phys
 {
    private static double Grav; //gravitational coefficent - diff
@@ -16,5 +17,17 @@ public abstract class Phys
       xPos=x;
       yPos=y;
       this.hitbox = hitbox;
+   }
+   public void draw(Graphics g)
+   {
+      hitbox.draw(g);
+   }
+   public void setHitbox(Hitbox hitbox)
+   {
+      this.hitbox = hitbox;
+   }
+   public Hitbox getHitbox()
+   {
+      return hitbox;
    }
 }

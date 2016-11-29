@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.*;
 public class Hitbox
 {
@@ -5,5 +6,12 @@ public class Hitbox
    public Hitbox(Shape[] boxes)
    {
       this.boxes = boxes;
+   }
+   public void draw(Graphics g)
+   {
+      for(Shape i:boxes)
+      {
+         i.draw(g);
+      }
    }
 }

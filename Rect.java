@@ -1,4 +1,5 @@
-public class Rect extends Shape
+import java.awt.*;
+public class Rect implements Shape
 {
    private double left;
    private double right;
@@ -14,6 +15,10 @@ public class Rect extends Shape
       bottom = Math.max(y1,y2);
       width = right - left;
       height = bottom - top;
+   }
+   public void draw(Graphics g)
+   {
+      g.fillRect((int)left,(int)top,(int)width,(int)height);
    }
    public double getLeft()
    {
