@@ -1,3 +1,5 @@
+package physics;
+import shapes.*;
 import java.util.*;
 public class Bob extends Character
 {

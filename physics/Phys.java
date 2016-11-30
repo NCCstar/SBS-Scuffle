@@ -1,3 +1,5 @@
+package physics;
+import shapes.*;
 import java.awt.*;
 public abstract class Phys
 {

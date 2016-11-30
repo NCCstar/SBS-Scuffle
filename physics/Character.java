@@ -1,3 +1,5 @@
+package physics;
+import shapes.*;
 public abstract class Character extends Phys
 {
    private boolean inAir;

@@ -1,12 +1,14 @@
-import java.io.*;
+import levels.*;
+import physics.*;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
 import java.awt.event.*;
 public class SBSS_Panel extends JPanel
 {
    private Level level;
    private Controller con;
-   private Character play1;
+   private physics.Character play1;
    public SBSS_Panel(Level l,Controller c)
    {
       level = l;
@@ -17,19 +19,16 @@ public class SBSS_Panel extends JPanel
    {
       super.paintComponent(g);
       g.setColor(Color.black);
-      for(Shape s:level.getBoxes())
-      {
-         s.draw(g);
-      }
+      level.draw(g);
       g.setColor(Color.red.darker());
       play1.draw(g);
       if(con.keyD)
       {
-         play1.
+         play1.offsetX(1);
       }
       if(con.keyA)
       {
-         
+         play1.offsetX(-1);
       }
    }  
 }

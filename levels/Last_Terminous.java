@@ -1,3 +1,5 @@
+package levels;
+import shapes.*;
 public class Last_Terminous extends Level
 {
    public Last_Terminous()
