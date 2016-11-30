@@ -1,7 +1,7 @@
 package physics;
 import shapes.*;
 import java.util.*;
-public class Bob extends Character
+public class Bob extends Player
 {
    public Bob(double x,double y)
    {

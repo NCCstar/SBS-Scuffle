@@ -1,3 +1,4 @@
+package primary;
 import java.awt.event.*;
 public class Controller
 {
@@ -22,6 +23,15 @@ public class Controller
    public void setGame(SBSS_Panel game)
    {
       this.game = game;
+   }
+   public void doEvent(int eventCode)
+   {
+      switch(eventCode)
+      {
+         case 0:keyD=false;
+         break;
+         default:break;
+      }
    }
    public void checkIn(KeyEvent e)
    {
@@ -67,7 +77,7 @@ public class Controller
             break;
          case KeyEvent.VK_S:keyS=false;
             break;
-         case KeyEvent.VK_D:keyD=false;
+         case KeyEvent.VK_D://keyD=false;
             break;
          case KeyEvent.VK_SPACE:keySp=false;
             break;
