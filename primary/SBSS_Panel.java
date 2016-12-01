@@ -1,6 +1,7 @@
 package primary;
 import levels.*;
 import physics.*;
+import physics.players.*;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -32,12 +33,6 @@ public class SBSS_Panel extends JPanel
          {
             con.doEvent(eCode1);
             eCode1=0;
-         }
-         if(con.keyW)
-         {
-            play1.jump();
-            eCode1 = 1;
-            timer=3000;
          }
       }
       else

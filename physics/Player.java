@@ -3,8 +3,9 @@ import shapes.*;
 public abstract class Player extends Phys
 {
    protected boolean inAir;
-   private double airMove;
-   private double airMax;
+   protected double airMove;
+   protected double landMove;
+   protected double airMax;
    public Player(double x,double y,Hitbox hitbox)
    {
       super(x,y,hitbox);
@@ -33,7 +34,17 @@ public abstract class Player extends Phys
       }
       else
       {
-         
+         switch(dir)
+         {
+            case 2:
+               xPos+=landMove;
+               break;
+            case 4:
+               xPos-=landMove;
+               break;
+            default:
+               break;
+         }
       }
    }
 }
