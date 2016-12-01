@@ -28,7 +28,7 @@ public class Controller
    {
       switch(eventCode)
       {
-         case 0:keyD=false;
+         case 1:keyD=false;
          break;
          default:break;
       }

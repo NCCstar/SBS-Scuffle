@@ -2,13 +2,13 @@ package physics;
 import shapes.*;
 import java.awt.*;
 public abstract class Phys
-{
-   private static double Grav; //gravitational coefficent - diff
-   private double xVel;
-   private double yVel;
-   private double xPos;
-   private double yPos;
-   private Hitbox hitbox;
+{//protected actually working.
+   protected static double Grav; //gravitational coefficent - diff
+   protected double xVel;
+   protected double yVel;
+   protected double xPos;
+   protected double yPos;
+   protected Hitbox hitbox;
    public void posTick()
    {
       xPos+=xVel;
