@@ -45,6 +45,15 @@ public class Rect implements Shape
    {
       return height;
    }
+   public boolean touches(Shape other)
+   {
+      if(other instanceof Rect)
+      {
+         Rect rect = (Rect)other;
+         return (this.left<rect.right&&this.right>rect.left) && (this.top<rect.bottom&&this.bottom>rect.top);
+      }
+      return false;
+   }
    public void offsetX(double x)
    {
       left+=x;

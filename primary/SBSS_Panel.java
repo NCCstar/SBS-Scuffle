@@ -2,6 +2,7 @@ package primary;
 import levels.*;
 import physics.*;
 import physics.players.*;
+import shapes.*;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -10,6 +11,7 @@ public class SBSS_Panel extends JPanel
    private Level level;
    private Controller con;
    private Player play1;
+   private Player play2;
    private double time1;
    private double time2;
    private int eCode1;
@@ -27,6 +29,20 @@ public class SBSS_Panel extends JPanel
       level.draw(g);
       g.setColor(Color.red.darker());
       play1.draw(g);
+      
+      //only if off ground
+      outerLoop:
+      for(Shape l:level.getBoxes())
+      {
+         for(Shape p:play1.getHitbox().getBoxes())
+         {
+            if(l.touches(p))
+            {
+               //move up one, set to ground
+               break outerLoop;
+            }
+         }
+      }
       if(time1<=0)
       {
          if(eCode1!=0)
@@ -48,6 +64,7 @@ public class SBSS_Panel extends JPanel
       {
          play1.move(2);
       }
+      play1.tick();
       repaint();
    }  
 }

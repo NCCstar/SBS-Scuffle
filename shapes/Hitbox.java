@@ -8,6 +8,10 @@ public class Hitbox
    {
       this.boxes = boxes;
    }
+   public Shape[] getBoxes()
+   {
+      return boxes;
+   }
    public void draw(Graphics g)
    {
       for(Shape i:boxes)

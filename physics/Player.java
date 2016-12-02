@@ -10,6 +10,10 @@ public abstract class Player extends Phys
    {
       super(x,y,hitbox);
    }
+   public void tick()
+   {
+      
+   }
    public void jump()
    {
       yVel = 10;
