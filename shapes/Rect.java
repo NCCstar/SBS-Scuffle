@@ -45,6 +45,14 @@ public class Rect implements Shape
    {
       return height;
    }
+   public int getX()
+   {
+      return (int)left;
+   }  
+   public int getY()
+   {
+      return (int)top;
+   }
    public boolean touches(Shape other)
    {
       if(other instanceof Rect)
@@ -58,5 +66,10 @@ public class Rect implements Shape
    {
       left+=x;
       right+=x;
+   }
+   public void offsetY(double y)
+   {
+      top+=y;
+      bottom+=y;
    }
 }

@@ -3,21 +3,17 @@ import shapes.*;
 import java.awt.*;
 public abstract class Phys
 {//protected actually working.
-   protected static double Grav; //gravitational coefficent - diff
+   protected double Grav; //gravitational coefficent - diff
    protected double xVel;
    protected double yVel;
-   protected double xPos;
-   protected double yPos;
    protected Hitbox hitbox;
    public void posTick()
    {
-      xPos+=xVel;
-      yPos+=yVel;
+      hitbox.offsetX(xVel);
+      hitbox.offsetY(yVel);
    }
-   public Phys(double x,double y,Hitbox hitbox)
+   public Phys(Hitbox hitbox)
    {
-      xPos=x;
-      yPos=y;
       this.hitbox = hitbox;
    }
    public void draw(Graphics g)
@@ -35,5 +31,18 @@ public abstract class Phys
    public void offsetX(double off)
    {
       hitbox.offsetX(off);
+   }
+   public void offsetY(double off)
+   {
+      hitbox.offsetY(off);
+   }
+   //TEMP
+   public double getXVel()
+   {
+      return xVel;
+   }
+   public double getYVel()
+   {
+      return yVel;
    }
 }

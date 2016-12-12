@@ -2,21 +2,35 @@ package physics;
 import shapes.*;
 public abstract class Player extends Phys
 {
-   protected boolean inAir;
+   protected boolean inAir=true;
    protected double airMove;
    protected double landMove;
    protected double airMax;
-   public Player(double x,double y,Hitbox hitbox)
+   protected double jumpPower;
+   protected double numJumps;
+   protected double maxJumps;
+   public Player(Hitbox hitbox)
    {
-      super(x,y,hitbox);
+      super(hitbox);
    }
    public void tick()
    {
+      //checkInAir has been done outside
+      if(inAir)
+      {
+         yVel+=Grav;
+         offsetX(xVel);
+         offsetY(yVel);
+      }
       
    }
-   public void jump()
+   public void setInAir(boolean bool)
    {
-      yVel = 10;
+      inAir=bool;
+   }
+   public boolean getInAir()
+   {
+      return inAir;
    }
    public void move(int dir)
    {
@@ -29,9 +43,12 @@ public abstract class Player extends Phys
                   xVel+=airMove;
                break;
             case 4:
-               if(xVel*-1<airMax)
+               if(Math.abs(xVel)<airMax)
                   xVel+=airMove;
                break;
+            case 1:
+               //check num jumps
+               yVel-=jumpPower;
             default:
                break;
          }
@@ -40,11 +57,15 @@ public abstract class Player extends Phys
       {
          switch(dir)
          {
+            case 1:
+               inAir=true;
+               yVel-=jumpPower;
+               offsetY(-1);
             case 2:
-               xPos+=landMove;
+               offsetX(landMove);
                break;
             case 4:
-               xPos-=landMove;
+               offsetX(landMove*-1);
                break;
             default:
                break;

@@ -29,8 +29,7 @@ public class SBSS_Panel extends JPanel
       level.draw(g);
       g.setColor(Color.red.darker());
       play1.draw(g);
-      
-      //only if off ground
+      //check inAir
       outerLoop:
       for(Shape l:level.getBoxes())
       {
@@ -38,11 +37,12 @@ public class SBSS_Panel extends JPanel
          {
             if(l.touches(p))
             {
-               //move up one, set to ground
+               play1.setInAir(false);
                break outerLoop;
             }
          }
       }
+      //events
       if(time1<=0)
       {
          if(eCode1!=0)
@@ -56,6 +56,7 @@ public class SBSS_Panel extends JPanel
          time1--;
          g.fillRect(0,0,10,10);
       }
+      //movement
       if(con.keyA)
       {
          play1.move(4);
@@ -64,7 +65,15 @@ public class SBSS_Panel extends JPanel
       {
          play1.move(2);
       }
+      //jump is event
+      
       play1.tick();
+      g.drawString(play1.getHitbox().getBoxes()[0].getX()+":"+play1.getHitbox().getBoxes()[0].getY(),0,10);
+      g.drawString(play1.getXVel()+":"+play1.getYVel(),0,20);
       repaint();
+   }
+   public void jump(int pNum)
+   {
+      play1.move(1);
    }  
 }

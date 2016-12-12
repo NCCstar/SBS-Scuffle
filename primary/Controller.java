@@ -29,15 +29,16 @@ public class Controller
       switch(eventCode)
       {
          case 1:keyD=false;
-         break;
-         default:break;
+            break;
+         default:
+            break;
       }
    }
    public void checkIn(KeyEvent e)
    {
       switch(e.getKeyCode())
       {
-         case KeyEvent.VK_W:keyW=true;
+         case KeyEvent.VK_W:game.jump(1);
             break;
          case KeyEvent.VK_A:keyA=true;
             break;
@@ -77,7 +78,7 @@ public class Controller
             break;
          case KeyEvent.VK_S:keyS=false;
             break;
-         case KeyEvent.VK_D://keyD=false;
+         case KeyEvent.VK_D:keyD=false;
             break;
          case KeyEvent.VK_SPACE:keySp=false;
             break;
