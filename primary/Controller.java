@@ -37,7 +37,13 @@ public class Controller
    {
       switch(e.getKeyCode())
       {
-         case KeyEvent.VK_W:game.jump(0,keyA||keyD);
+         case KeyEvent.VK_W:
+            if(keyA)
+               game.jump(0,4);
+            else
+               if(keyD)
+                  game.jump(0,2);
+            game.jump(0,0);
             break;
          case KeyEvent.VK_A:keyA=true;
             break;
@@ -55,7 +61,13 @@ public class Controller
             break;
          case KeyEvent.VK_NUMPAD6:key6=true;
             break;
-         case KeyEvent.VK_NUMPAD8:game.jump(1,key4||key6);
+         case KeyEvent.VK_NUMPAD8:
+         if(key4)
+               game.jump(1,4);
+            else
+               if(key6)
+                  game.jump(1,2);
+            game.jump(1,0);
             break;
          case KeyEvent.VK_ENTER:keyEn=true;
             break;

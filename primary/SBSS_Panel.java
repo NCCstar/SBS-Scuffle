@@ -19,8 +19,8 @@ public class SBSS_Panel extends JPanel
    {
       level = l;
       con = c;
-      play[0] = new Bob(400,300);
-      play[1] = new Steven(600,300);
+      play[0] = new Steven(400,300);
+      play[1] = new Bob(600,300);
    }
    public void paintComponent(Graphics g)
    {
@@ -101,8 +101,8 @@ public class SBSS_Panel extends JPanel
    
       repaint();
    }
-   public void jump(int pNum,boolean isMoving)
+   public void jump(int pNum,int dirMoving)
    {
-      play[pNum].move(1,isMoving);
+      play[pNum].move(1,dirMoving);
    }  
 }

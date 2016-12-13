@@ -21,8 +21,16 @@ public abstract class Player extends Phys
          yVel+=Grav;
          offsetX(xVel);
          offsetY(yVel);
-      }
-      
+         if(xVel>0.01)
+         {
+            xVel-=airMove/6;
+         }
+         else
+            if(xVel<0.01)
+            {
+               xVel+=airMove/6;
+            }
+      }  
    }
    public void setInAir(boolean bool)
    {
@@ -38,7 +46,7 @@ public abstract class Player extends Phys
    {
       return inAir;
    }
-   public void move(int dir,boolean isMoving)
+   public void move(int dir,int dirMoving)
    {
       if(inAir)
       {
@@ -71,6 +79,15 @@ public abstract class Player extends Phys
          {
             case 1:
                inAir=true;
+               if(dirMoving==2)
+               {
+                  xVel=landMove;
+               }
+               else
+                  if(dirMoving==4)
+                  {
+                     xVel=landMove*-1;
+                  }
                numJumps++;
                yVel-=jumpPower;
                offsetY(-2);
@@ -87,6 +104,6 @@ public abstract class Player extends Phys
    }
    public void move(int dir)
    {
-      move(dir,false);
+      move(dir,0);
    }
 }

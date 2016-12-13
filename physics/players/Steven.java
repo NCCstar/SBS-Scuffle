@@ -10,7 +10,7 @@ public class Steven extends Player
       landMove = 1;
       airMove = .017;
       Grav = .012;
-      jumpPower = 2.2;
+      jumpPower = 2.3;
       airMax = 1.2;
       maxJumps = 1;
    }
