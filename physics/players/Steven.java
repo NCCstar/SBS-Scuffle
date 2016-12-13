@@ -6,7 +6,11 @@ public class Steven extends Player
 {
    public Steven(double x,double y)
    {
-      super(new Hitbox(new Shape[]{new Rect(x,y-25,x+15,y)}));
+      super();
+      Shape[] boxes = new Shape[2];
+      boxes[0] = new Rect(false,x,y-23,x+17,y);//torso
+      boxes[1] = new Rect(true,x-1,y-1,x+18,y+1);//feet
+      setHitbox(new Hitbox(boxes));      
       landMove = 1.05;
       airMove = .017;
       Grav = .012;

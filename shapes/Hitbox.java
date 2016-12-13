@@ -35,9 +35,14 @@ public class Hitbox
    }
    public void offsetTo(double x,double y)
    {
+      int xNow = boxes[0].getX();
+      int yNow = boxes[0].getY();
+      double xDif = x-xNow;
+      double yDif = y-yNow;
       for(Shape i:boxes)
       {
-         i.offsetTo(x,y);
+         i.offsetX(xDif);
+         i.offsetY(yDif);
       }
    }
 }

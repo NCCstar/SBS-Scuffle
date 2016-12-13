@@ -2,14 +2,16 @@ package shapes;
 import java.awt.*;
 public class Rect implements Shape
 {
+   private boolean solid;
    private double left;
    private double right;
    private double top;
    private double bottom;
    private double width;
    private double height;
-   public Rect(double x1,double y1,double x2,double y2)
+   public Rect(boolean solid,double x1,double y1,double x2,double y2)
    {
+      this.solid = solid;
       left = Math.min(x1,x2);
       right = Math.max(x1,x2);
       top = Math.min(y1,y2);
@@ -20,6 +22,10 @@ public class Rect implements Shape
    public void draw(Graphics g)
    {
       g.fillRect((int)left,(int)top,(int)width,(int)height);
+   }
+   public boolean getSolid()
+   {
+      return solid;
    }
    public double getLeft()
    {

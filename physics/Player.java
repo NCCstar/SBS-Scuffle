@@ -13,6 +13,8 @@ public abstract class Player extends Phys
    {
       super(hitbox);
    }
+   protected Player()
+   {}
    public void tick()
    {
       //checkInAir has been done outside
@@ -63,7 +65,7 @@ public abstract class Player extends Phys
             case 1:
                if(numJumps<maxJumps)
                {
-                  yVel=-1*jumpPower*(maxJumps-numJumps)/maxJumps;
+                  yVel=-1*jumpPower*(maxJumps-numJumps+3)/(maxJumps+3);
                   numJumps++;
                }
                break;

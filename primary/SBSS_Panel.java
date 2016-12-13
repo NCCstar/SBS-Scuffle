@@ -15,6 +15,8 @@ public class SBSS_Panel extends JPanel
    private double time2;
    private int eCode1;
    private int eCode2;
+   private static long RATE = 1000000000/240;//(1 second/(frames/second))
+   private long lastRun = System.nanoTime();
    public SBSS_Panel(Level l,Controller c)
    {
       level = l;
@@ -31,74 +33,81 @@ public class SBSS_Panel extends JPanel
       play[0].draw(g);
       g.setColor(Color.blue.darker());
       play[1].draw(g);
-      //check inAir
-      for(int i=0;i<play.length;i++)//for each player
+      if(System.nanoTime()-lastRun>RATE)
       {
-         boolean inAir = true;
-         outerLoop:
-         for(Shape l:level.getBoxes())
+         lastRun=System.nanoTime();
+      //check inAir
+         for(int i=0;i<play.length;i++)//for each player
          {
-            for(Shape p:play[i].getHitbox().getBoxes())
+            boolean inAir = true;
+            outerLoop:
+            for(Shape l:level.getBoxes())
             {
-               if(l.touches(p))
+               for(Shape p:play[i].getHitbox().getBoxes())
                {
-                  inAir=false;
-                  break outerLoop;
+                  if(p.getSolid()&&l.getSolid())
+                  {
+                     if(l.touches(p))
+                     {
+                        inAir=false;
+                        break outerLoop;
+                     }
+                  }
                }
             }
+            play[i].setInAir(inAir);
          }
-         play[i].setInAir(inAir);
-      }
       //events
-      if(time1<=0)
-      {
-         if(eCode1!=0)
+         if(time1<=0)
          {
-            con.doEvent(eCode1);
-            eCode1=0;
+            if(eCode1!=0)
+            {
+               con.doEvent(eCode1);
+               eCode1=0;
+            }
          }
-      }
-      else
-      {
-         time1--;
-         g.fillRect(0,0,10,10);
-      }
+         else
+         {
+            time1--;
+            g.fillRect(0,0,10,10);
+         }
       //movement
-      if(con.keyA)
-      {
-         play[0].move(4);
-      }
-      if(con.keyD)
-      {
-         play[0].move(2);
-      }
-      if(con.key4)
-      {
-         play[1].move(4);
-      }
-      if(con.key6)
-      {
-         play[1].move(2);
-      }
+         if(con.keyA)
+         {
+            play[0].move(4);
+         }
+         if(con.keyD)
+         {
+            play[0].move(2);
+         }
+         if(con.key4)
+         {
+            play[1].move(4);
+         }
+         if(con.key6)
+         {
+            play[1].move(2);
+         }
       //DEBUG
-      if(con.keySp)
-      {
-         play[0].getHitbox().offsetTo(400,300);
-         play[1].getHitbox().offsetTo(600,300);
-      }
+         if(con.keySp)
+         {
+            play[0].getHitbox().offsetTo(400,300);
+            play[1].getHitbox().offsetTo(600,300);
+         }
       //end DEGUB
       //jump is event
       
-      for(Player p:play)
-         p.tick();
+         for(Player p:play)
+            p.tick();
       //DEBUG TEXT
+         g.fillRect(getWidth()-20,0,getWidth(),20);
+      }
       g.setColor(Color.red.darker());
       g.drawString(play[0].getHitbox().getBoxes()[0].getX()+":"+play[0].getHitbox().getBoxes()[0].getY(),0,10);
       g.drawString(play[0].getXVel()+":"+play[0].getYVel(),0,20);
       g.setColor(Color.blue.darker());
       g.drawString(play[1].getHitbox().getBoxes()[0].getX()+":"+play[1].getHitbox().getBoxes()[0].getY(),0,30);
       g.drawString(play[1].getXVel()+":"+play[1].getYVel(),0,40);
-   
       repaint();
    }
    public void jump(int pNum,int dirMoving)

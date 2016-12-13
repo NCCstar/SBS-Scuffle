@@ -8,5 +8,6 @@ public interface Shape
    public void offsetTo(double x,double y);
    public int getX();
    public int getY();
+   public boolean getSolid();
    public boolean touches(Shape other);
 }

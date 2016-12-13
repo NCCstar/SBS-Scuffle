@@ -7,14 +7,16 @@ public abstract class Phys
    protected double xVel;
    protected double yVel;
    protected Hitbox hitbox;
+   public Phys(Hitbox hitbox)
+   {
+      this.hitbox = hitbox;
+   }
+   protected Phys()
+   {}
    public void posTick()
    {
       hitbox.offsetX(xVel);
       hitbox.offsetY(yVel);
-   }
-   public Phys(Hitbox hitbox)
-   {
-      this.hitbox = hitbox;
    }
    public void draw(Graphics g)
    {

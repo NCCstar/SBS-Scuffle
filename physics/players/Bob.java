@@ -6,7 +6,10 @@ public class Bob extends Player
 {
    public Bob(double x,double y)
    {
-      super(new Hitbox(new Shape[]{new Rect(x,y-20,x+20,y)}));
+      super();
+      Shape[] boxes = new Shape[1];
+      boxes[0] = new Rect(true,x,y-20,x+20,y);
+      setHitbox(new Hitbox(boxes));
       landMove = .9;
       airMove = .015;
       Grav = .008;
