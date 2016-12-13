@@ -33,4 +33,11 @@ public class Hitbox
          i.offsetY(off);
       }
    }
+   public void offsetTo(double x,double y)
+   {
+      for(Shape i:boxes)
+      {
+         i.offsetTo(x,y);
+      }
+   }
 }

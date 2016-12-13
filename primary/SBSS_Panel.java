@@ -10,8 +10,7 @@ public class SBSS_Panel extends JPanel
 {
    private Level level;
    private Controller con;
-   private Player play1;
-   private Player play2;
+   private Player[] play = new Player[2];
    private double time1;
    private double time2;
    private int eCode1;
@@ -20,7 +19,8 @@ public class SBSS_Panel extends JPanel
    {
       level = l;
       con = c;
-      play1 = new Bob(500,400);
+      play[0] = new Bob(400,300);
+      play[1] = new Steven(600,300);
    }
    public void paintComponent(Graphics g)
    {
@@ -28,19 +28,26 @@ public class SBSS_Panel extends JPanel
       g.setColor(Color.black);
       level.draw(g);
       g.setColor(Color.red.darker());
-      play1.draw(g);
+      play[0].draw(g);
+      g.setColor(Color.blue.darker());
+      play[1].draw(g);
       //check inAir
-      outerLoop:
-      for(Shape l:level.getBoxes())
+      for(int i=0;i<play.length;i++)//for each player
       {
-         for(Shape p:play1.getHitbox().getBoxes())
+         boolean inAir = true;
+         outerLoop:
+         for(Shape l:level.getBoxes())
          {
-            if(l.touches(p))
+            for(Shape p:play[i].getHitbox().getBoxes())
             {
-               play1.setInAir(false);
-               break outerLoop;
+               if(l.touches(p))
+               {
+                  inAir=false;
+                  break outerLoop;
+               }
             }
          }
+         play[i].setInAir(inAir);
       }
       //events
       if(time1<=0)
@@ -59,21 +66,43 @@ public class SBSS_Panel extends JPanel
       //movement
       if(con.keyA)
       {
-         play1.move(4);
+         play[0].move(4);
       }
       if(con.keyD)
       {
-         play1.move(2);
+         play[0].move(2);
       }
+      if(con.key4)
+      {
+         play[1].move(4);
+      }
+      if(con.key6)
+      {
+         play[1].move(2);
+      }
+      //DEBUG
+      if(con.keySp)
+      {
+         play[0].getHitbox().offsetTo(400,300);
+         play[1].getHitbox().offsetTo(600,300);
+      }
+      //end DEGUB
       //jump is event
       
-      play1.tick();
-      g.drawString(play1.getHitbox().getBoxes()[0].getX()+":"+play1.getHitbox().getBoxes()[0].getY(),0,10);
-      g.drawString(play1.getXVel()+":"+play1.getYVel(),0,20);
+      for(Player p:play)
+         p.tick();
+      //DEBUG TEXT
+      g.setColor(Color.red.darker());
+      g.drawString(play[0].getHitbox().getBoxes()[0].getX()+":"+play[0].getHitbox().getBoxes()[0].getY(),0,10);
+      g.drawString(play[0].getXVel()+":"+play[0].getYVel(),0,20);
+      g.setColor(Color.blue.darker());
+      g.drawString(play[1].getHitbox().getBoxes()[0].getX()+":"+play[1].getHitbox().getBoxes()[0].getY(),0,30);
+      g.drawString(play[1].getXVel()+":"+play[1].getYVel(),0,40);
+   
       repaint();
    }
-   public void jump(int pNum)
+   public void jump(int pNum,boolean isMoving)
    {
-      play1.move(1);
+      play[pNum].move(1,isMoving);
    }  
 }

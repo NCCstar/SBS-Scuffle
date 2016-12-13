@@ -72,4 +72,11 @@ public class Rect implements Shape
       top+=y;
       bottom+=y;
    }
+   public void offsetTo(double x,double y)
+   {
+      left=x;
+      top=y;
+      right=x+width;
+      bottom=y+height;
+   }
 }

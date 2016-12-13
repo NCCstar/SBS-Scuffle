@@ -27,12 +27,18 @@ public abstract class Player extends Phys
    public void setInAir(boolean bool)
    {
       inAir=bool;
+      if(!inAir)
+      {
+         xVel=0;
+         yVel=0;
+         numJumps=0;
+      }
    }
    public boolean getInAir()
    {
       return inAir;
    }
-   public void move(int dir)
+   public void move(int dir,boolean isMoving)
    {
       if(inAir)
       {
@@ -43,12 +49,18 @@ public abstract class Player extends Phys
                   xVel+=airMove;
                break;
             case 4:
-               if(Math.abs(xVel)<airMax)
-                  xVel+=airMove;
+               if(-1*xVel<airMax)
+                  xVel-=airMove;
                break;
             case 1:
-               //check num jumps
-               yVel-=jumpPower;
+               if(numJumps<maxJumps)
+               {
+                  yVel=-1*jumpPower*(maxJumps-numJumps)/maxJumps;
+                  numJumps++;
+               }
+               break;
+            case 3:
+               yVel+=Grav*0.5;
             default:
                break;
          }
@@ -59,8 +71,9 @@ public abstract class Player extends Phys
          {
             case 1:
                inAir=true;
+               numJumps++;
                yVel-=jumpPower;
-               offsetY(-1);
+               offsetY(-2);
             case 2:
                offsetX(landMove);
                break;
@@ -71,5 +84,9 @@ public abstract class Player extends Phys
                break;
          }
       }
+   }
+   public void move(int dir)
+   {
+      move(dir,false);
    }
 }
