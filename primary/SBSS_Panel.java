@@ -95,10 +95,9 @@ public class SBSS_Panel extends JPanel
             play[1].getHitbox().offsetTo(600,300);
          }
       //end DEGUB
-      //jump is event
-      
-         for(Player p:play)
-            p.tick();
+      //jump is event?
+        play[0].tick(con.keyS);
+        play[1].tick(con.key5);
       //DEBUG TEXT
          g.fillRect(getWidth()-20,0,getWidth(),20);
       }

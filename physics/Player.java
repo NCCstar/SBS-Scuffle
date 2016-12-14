@@ -4,6 +4,7 @@ public abstract class Player extends Phys
 {
    protected boolean inAir=true;
    protected double airMove;
+   protected double ffMulti;
    protected double landMove;
    protected double airMax;
    protected double jumpPower;
@@ -15,12 +16,15 @@ public abstract class Player extends Phys
    }
    protected Player()
    {}
-   public void tick()
+   public void tick(boolean fastFall)
    {
       //checkInAir has been done outside
       if(inAir)
       {
-         yVel+=Grav;
+         if(fastFall)
+            yVel+=Grav*ffMulti;
+         else
+            yVel+=Grav;
          offsetX(xVel);
          offsetY(yVel);
          if(xVel>0.01)
