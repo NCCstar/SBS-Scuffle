@@ -11,13 +11,13 @@ public class Steven extends Player
       boxes[0] = new Rect(false,x,y-23,x+17,y);//torso
       boxes[1] = new Rect(true,x-1,y-1,x+18,y+1);//feet
       setHitbox(new Hitbox(boxes)); 
-           
+          
       landMove = 1.05;
-      airMove = .017;
-      ffMulti = 2;
-      Grav = .012;
       jumpPower = 2.3;
-      airMax = 1.2;
       maxJumps = 1;
+      airMove = .017;
+      airMax = 1.3;
+      Grav = .012;
+      ffMulti = 2;    
    }
 }

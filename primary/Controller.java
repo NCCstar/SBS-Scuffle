@@ -67,7 +67,8 @@ public class Controller
             else
                if(key6)
                   game.jump(1,2);
-            game.jump(1,0);
+               else
+                  game.jump(1,0);
             break;
          case KeyEvent.VK_NUMPAD4:key4=true;
             break;

@@ -8,8 +8,9 @@ public abstract class Player extends Phys
    protected double landMove;
    protected double airMax;
    protected double jumpPower;
-   protected double numJumps;
-   protected double maxJumps;
+   protected int numJumps;
+   protected int maxJumps;
+   
    public Player(Hitbox hitbox)
    {
       super(hitbox);
@@ -97,6 +98,7 @@ public abstract class Player extends Phys
                numJumps++;
                yVel-=jumpPower;
                offsetY(-2);
+               break;
             case 2:
                offsetX(landMove);
                break;
