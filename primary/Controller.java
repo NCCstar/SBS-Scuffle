@@ -25,6 +25,7 @@ public class Controller
    {
       this.game = game;
    }
+   //eventCodes: 1 = 
    public void doEvent(int eventCode)
    {
       switch(eventCode)
@@ -56,7 +57,12 @@ public class Controller
             break;
          case KeyEvent.VK_D:keyD=true;
             break;
-         case KeyEvent.VK_SHIFT:keySh=true;
+         case KeyEvent.VK_SHIFT:
+            keySh=true;
+            if(keyD^keyA)
+            {
+               
+            }      
             break;
          case KeyEvent.VK_F:keyF=true;
             break;

@@ -11,10 +11,6 @@ public class SBSS_Panel extends JPanel
    private Level level;
    private Controller con;
    private Player[] play = new Player[2];
-   private double time1;
-   private double time2;
-   private int eCode1;
-   private int eCode2;
    private static long RATE = 1000000000/240;//(1 second/(frames/second))
    private long lastRun = System.nanoTime();
    public SBSS_Panel(Level l,Controller c)
@@ -33,10 +29,9 @@ public class SBSS_Panel extends JPanel
       play[0].draw(g);
       g.setColor(Color.blue.darker());
       play[1].draw(g);
-      if(System.nanoTime()-lastRun>RATE)
+      if(System.nanoTime()-lastRun>RATE)//check FPS
       {
          lastRun=System.nanoTime();
-      //check inAir
          for(int i=0;i<play.length;i++)//for each player
          {
             boolean inAir = true;
@@ -56,20 +51,6 @@ public class SBSS_Panel extends JPanel
                }
             }
             play[i].setInAir(inAir);
-         }
-      //events
-         if(time1<=0)
-         {
-            if(eCode1!=0)
-            {
-               con.doEvent(eCode1);
-               eCode1=0;
-            }
-         }
-         else
-         {
-            time1--;
-            g.fillRect(0,0,10,10);
          }
       //movement
          if(con.keyA)
@@ -95,8 +76,8 @@ public class SBSS_Panel extends JPanel
             play[1].getHitbox().offsetTo(600,300);
          }
       //end DEGUB
-      //jump is event?
-        play[0].tick(con.keyS);
+      
+        play[0].tick(con.keyS);//ticks falling, events
         play[1].tick(con.key5);
       //DEBUG TEXT
          g.fillRect(getWidth()-20,0,getWidth(),20);
