@@ -11,7 +11,7 @@ public class SBSS_Panel extends JPanel
    private Level level;
    private Controller con;
    private Player[] play = new Player[2];
-   private static long RATE = 1000000000/240;//(1 second/(frames/second))
+   private static long RATE = 1000000000/20;//(1 second/(frames/second))
    private long lastRun = System.nanoTime();
    public SBSS_Panel(Level l,Controller c)
    {

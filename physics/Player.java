@@ -23,9 +23,12 @@ public abstract class Player extends Phys
    public Player(Hitbox hitbox)
    {
       super(hitbox);
+      attacks = new ArrayList();
    }
    protected Player()
-   {}
+   {
+      attacks = new ArrayList();
+   }
    public void tick(boolean fastFall)
    {
       //checkInAir has been done outside
@@ -48,16 +51,23 @@ public abstract class Player extends Phys
             }
       }
       //tick events
-      attacks.clear();
-      attacks.add(eventHitbox[eventCode].get(eventTime));
-      offsetX(eventOffsetX[eventCode].get(eventTime));
-      eventTime++;
-      if(eventTime>=eventLength[eventCode])
+      if(eventCode!=0)
       {
-         eventCode = 0;
-         eventTime = 0;
-         attacks = new ArrayList<Hitbox>();
+         attacks.clear();
+         attacks.add(eventHitbox[eventCode].get(eventTime));
+         offsetX(eventOffsetX[eventCode].get(eventTime));
+         eventTime++;
+         if(eventTime>=eventLength[eventCode])
+         {
+            eventCode = 0;
+            eventTime = 0;
+            attacks.clear();
+         }
       }
+   }
+   public List<Hitbox> getAttacks()
+   {
+      return attacks;
    }
    public void setInAir(boolean bool)
    {
