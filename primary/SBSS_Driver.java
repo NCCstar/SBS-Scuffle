@@ -1,3 +1,4 @@
+package primary;
 import javax.swing.*;
 import levels.*;
 import primary.*;

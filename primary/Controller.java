@@ -30,7 +30,7 @@ public class Controller
    {
       switch(eventCode)
       {
-         case 1:keyD=false;
+         case 1:
             break;
          default:
             break;
@@ -61,8 +61,30 @@ public class Controller
             keySh=true;
             if(keyD^keyA)
             {
-               
+               if(keyW^keyS)
+               {
+                  game.attack(0,0);
+               }
+               else
+               {
+                  if(keyW)
+                  {
+                     game.attack(0,1);
+                  }
+                  else
+                  {
+                     game.attack(0,3);
+                  }
+               }
             }      
+            if(keyD)
+            {
+               game.attack(0,2);
+            }
+            else
+            {
+               game.attack(0,4);
+            }
             break;
          case KeyEvent.VK_F:keyF=true;
             break;

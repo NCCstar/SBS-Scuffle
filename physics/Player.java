@@ -3,6 +3,8 @@ import shapes.*;
 import java.util.*;
 public abstract class Player extends Phys
 {
+   public static final int MAX_EVENTS = 4;
+
    protected List<Hitbox> attacks;
    protected boolean inAir=true;
    protected double airMove;
@@ -13,7 +15,7 @@ public abstract class Player extends Phys
    protected int numJumps;
    protected int maxJumps;
    protected int eventCode;
-   //0=none, 1=upAttack, 2=rightAttack, 3=downAttack, 4=leftAttack
+   //0=standing, 1=upAttack, 2=rightAttack, 3=downAttack, 4=leftAttack
    protected int[] eventLength;
    protected List<Hitbox>[] eventHitbox;
    protected List<Double>[] eventOffsetX;

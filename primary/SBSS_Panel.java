@@ -11,7 +11,7 @@ public class SBSS_Panel extends JPanel
    private Level level;
    private Controller con;
    private Player[] play = new Player[2];
-   private static long RATE = 1000000000/20;//(1 second/(frames/second))
+   private static long RATE = 1000000000/240;//(1 second/(frames/second))
    private long lastRun = System.nanoTime();
    public SBSS_Panel(Level l,Controller c)
    {
@@ -77,8 +77,8 @@ public class SBSS_Panel extends JPanel
          }
       //end DEGUB
       
-        play[0].tick(con.keyS);//ticks falling, events
-        play[1].tick(con.key5);
+         play[0].tick(con.keyS);//ticks falling, events
+         play[1].tick(con.key5);
       //DEBUG TEXT
          g.fillRect(getWidth()-20,0,getWidth(),20);
       }
@@ -94,4 +94,8 @@ public class SBSS_Panel extends JPanel
    {
       play[pNum].move(1,dirMoving);
    }  
+   public void attack(int pNum,int dirAtk)
+   {
+      play[pNum].startAttack(dirAtk);
+   }
 }
