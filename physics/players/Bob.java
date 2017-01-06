@@ -19,4 +19,14 @@ public class Bob extends Player
       Grav = .008;
       ffMulti = 2;
    }
+   /*
+      int[] eventLength;
+      List<Hitbox>[] eventHitbox;
+      List<Double>[] eventOffsetX;
+      List<Double>[] eventOffsetY;
+   */
+   protected void defineHitboxes()
+   {
+   
+   }
 }

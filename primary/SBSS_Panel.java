@@ -35,8 +35,7 @@ public class SBSS_Panel extends JPanel
          for(int i=0;i<play.length;i++)//for each player
          {
             boolean inAir = true;
-            outerLoop:
-            for(Shape l:level.getBoxes())
+            outerLoop: for(Shape l:level.getBoxes())
             {
                for(Shape p:play[i].getHitbox().getBoxes())
                {

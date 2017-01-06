@@ -19,4 +19,14 @@ public class Mac extends Player
       Grav = .012;
       ffMulti = 3;      
    }
+   /*
+      int[] eventLength;
+      List<Hitbox>[] eventHitbox;
+      List<Double>[] eventOffsetX;
+      List<Double>[] eventOffsetY;
+   */
+   protected void defineHitboxes()
+   {
+   
+   }
 }

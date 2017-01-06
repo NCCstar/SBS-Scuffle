@@ -7,6 +7,11 @@ public abstract class Level
    public int XSIZE;
    public int YSIZE;
    private List<Shape> boxes = new ArrayList();
+   public Level()
+   {
+      XSIZE = 0;
+      YSIZE = 0;
+   }
    public List<Shape> getBoxes()
    {
       return boxes;

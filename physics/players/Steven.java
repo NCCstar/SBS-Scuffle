@@ -20,4 +20,24 @@ public class Steven extends Player
       Grav = .012;
       ffMulti = 2;    
    }
+   /*
+   0=standing, 1=upAttack, 2=rightAttack, 3=downAttack, 4=leftAttack
+      int[] eventLength;
+      List<Hitbox>[] eventHitbox;
+      List<Double>[] eventOffsetX;
+      List<Double>[] eventOffsetY;
+   */
+   protected void defineHitboxes()
+   {
+      eventLength = new int[MAX_EVENTS+1];
+      eventHitbox = new ArrayList[MAX_EVENTS+1];
+      for(int i=0;i<eventHitbox.length;i++)
+         eventHitbox[i] = new ArrayList();
+      eventOffsetX = new ArrayList[MAX_EVENTS+1];
+      for(int i=0;i<eventOffsetX.length;i++)
+         eventOffsetX[i] = new ArrayList();
+      eventOffsetY = new ArrayList[MAX_EVENTS+1];
+      for(int i=0;i<eventOffsetY.length;i++)
+         eventOffsetY[i] = new ArrayList();
+   }
 }

@@ -59,14 +59,14 @@ public class Controller
             break;
          case KeyEvent.VK_SHIFT:
             keySh=true;
-            if(keyD^keyA)
+            if(keyD^keyA)//not pointing l/r
             {
-               if(keyW^keyS)
+               if(keyW^keyS)//not pointing u/d
                {
                   game.attack(0,0);
                }
                else
-               {
+               {//not l/r, either up or down
                   if(keyW)
                   {
                      game.attack(0,1);
@@ -76,7 +76,7 @@ public class Controller
                      game.attack(0,3);
                   }
                }
-            }      
+            }//moving l/r    
             if(keyD)
             {
                game.attack(0,2);

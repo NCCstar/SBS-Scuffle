@@ -14,7 +14,9 @@ public abstract class Phys
       this.hitbox = hitbox;
    }
    protected Phys()
-   {}
+   {
+      this(null);
+   }
    public void posTick()
    {
       hitbox.offsetX(xVel);
