@@ -39,5 +39,9 @@ public class Steven extends Player
       eventOffsetY = new ArrayList[MAX_EVENTS+1];
       for(int i=0;i<eventOffsetY.length;i++)
          eventOffsetY[i] = new ArrayList();
+      
+      eventLength[0] = 31;
+      Hitbox tempBox = 
+      eventHitbox[0].add(new Hitbox(new Rect(false,this.hitbox.getBoxes[1].getLeft(),))
    }
 }

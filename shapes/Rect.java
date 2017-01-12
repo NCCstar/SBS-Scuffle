@@ -19,6 +19,7 @@ public class Rect implements Shape
       width = right - left;
       height = bottom - top;
    }
+   
    public void draw(Graphics g)
    {
       g.fillRect((int)left,(int)top,(int)width,(int)height);
