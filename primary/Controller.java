@@ -59,33 +59,31 @@ public class Controller
             break;
          case KeyEvent.VK_SHIFT:
             keySh=true;
-            if(keyD^keyA)//not pointing l/r
+            if(keyD==keyA)//not pointing l/r
             {
-               if(keyW^keyS)//not pointing u/d
+               if(keyW==keyS)//not pointing u/d
                {
                   game.attack(0,0);
+                  break;
                }
-               else
                {//not l/r, either up or down
                   if(keyW)
                   {
                      game.attack(0,1);
+                     break;
                   }
-                  else
-                  {
-                     game.attack(0,3);
-                  }
+                  game.attack(0,3);
+                  break;
                }
-            }//moving l/r    
+            }//moving l/r   
             if(keyD)
             {
                game.attack(0,2);
-            }
-            else
-            {
-               game.attack(0,4);
-            }
+               break;
+            }    
+            game.attack(0,4);
             break;
+             
          case KeyEvent.VK_F:keyF=true;
             break;
          

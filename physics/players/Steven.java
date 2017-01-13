@@ -11,6 +11,7 @@ public class Steven extends Player
       boxes[0] = new Rect(false,x,y-23,x+17,y);//torso
       boxes[1] = new Rect(true,x-1,y-1,x+18,y+1);//feet
       setHitbox(new Hitbox(boxes)); 
+      defineHitboxes();
           
       landMove = 1.05;
       jumpPower = 2.3;
@@ -41,7 +42,12 @@ public class Steven extends Player
          eventOffsetY[i] = new ArrayList();
       
       eventLength[0] = 31;
-      Hitbox tempBox = 
-      eventHitbox[0].add(new Hitbox(new Rect(false,this.hitbox.getBoxes[1].getLeft(),))
+      Rect charBox = (Rect)this.hitbox.getBoxes()[1];
+      for(int i=0;i<240;i++)
+      {
+         eventHitbox[0].add(new Hitbox(new Rect(false,charBox.getLeft()-10,charBox.getTop(),charBox.getRight()+10,charBox.getBottom())));
+         eventOffsetX[0].add(0.0);
+         eventOffsetY[0].add(-1.0);
+      }
    }
 }

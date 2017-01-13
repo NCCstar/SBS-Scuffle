@@ -14,7 +14,7 @@ public abstract class Player extends Phys
    protected double jumpPower;
    protected int numJumps;
    protected int maxJumps;
-   protected int eventCode;
+   protected int eventCode = -1;
    //0=standing, 1=upAttack, 2=rightAttack, 3=downAttack, 4=leftAttack
    protected int[] eventLength;
    protected List<Hitbox>[] eventHitbox;
@@ -26,7 +26,6 @@ public abstract class Player extends Phys
    {
       super(hitbox);
       attacks = new ArrayList();
-      defineHitboxes();
    }
    protected Player()
    {
@@ -55,11 +54,12 @@ public abstract class Player extends Phys
             }
       }
       //tick events
-      if(eventCode!=0)
+      if(eventCode!=-1)
       {
+         ;
          if(eventTime>=eventLength[eventCode])
          {
-            eventCode = 0;
+            eventCode = -1;
             eventTime = 0;
             attacks.clear();
          }
@@ -68,6 +68,7 @@ public abstract class Player extends Phys
             attacks.clear();
             attacks.add(eventHitbox[eventCode].get(eventTime));
             offsetX(eventOffsetX[eventCode].get(eventTime));
+            offsetY(eventOffsetY[eventCode].get(eventTime));
             eventTime++;
          }
       }
