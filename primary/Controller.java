@@ -26,16 +26,6 @@ public class Controller
       this.game = game;
    }
    //eventCodes: 1 = 
-   public void doEvent(int eventCode)
-   {
-      switch(eventCode)
-      {
-         case 1:
-            break;
-         default:
-            break;
-      }
-   }
    public void checkIn(KeyEvent e)
    {
       switch(e.getKeyCode())
